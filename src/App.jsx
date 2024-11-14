@@ -1,6 +1,7 @@
 import { Menu, Users, Video,HeartHandshake, 
   Building2, } from 'lucide-react';
 import './App.css'
+import AboutUsSection from './Test';
 export default function name() {
   const services = [
     {id:1,icon:Users,title:"Online Community",sentence:"Connect with peers and find support in our monitored online community",buttonName:"Join Community"},
@@ -16,7 +17,6 @@ export default function name() {
       <ul className='navitems'>
         <a href="#"><li>Services</li></a>
         <a href="#"><li>Gallery</li></a>
-        <a href="#"><li>RehabCenters</li></a>
         <a href="#"><li>About</li></a>
         <a href="#"><li>Contact</li></a>
       </ul>
@@ -49,6 +49,22 @@ export default function name() {
       <h2>Gallery</h2>
       <p>Every Image has a story to tell.</p>
     </section>
+    <section id='About'>
+      <h2>Helping overcome drug addiction</h2>
+      <div className="line"></div>
+      <div className="aboutHero">
+        <div className="text">
+          <p>We understand the challenges that come with addiction recovery in Nigeria,We're dedicated to bridging the gap between individuals and the resources they need, from therapy and rehab to a compassionate network that supports each step of the journey.</p>
+          <br />
+          <p> Our mission is to create a recovery path that's both accessible and empowering, providing a safe space for people to rebuild their lives with dignity and hope. We're here to redefine what recovery looks like one connection, one conversation, one step at a time.</p>
+        </div>
+        <div className="image"></div>
+        <div className="aboutContent">
+
+        </div>
+      </div>
+    </section>
+    {/* <AboutUsSection/> */}
     </div>
     </>
   );
