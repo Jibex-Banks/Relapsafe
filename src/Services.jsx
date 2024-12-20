@@ -20,7 +20,7 @@ export default function Service(){
 
   // Intersection Observer for Services section
   const { ref: servicesRef, inView: isServicesVisible } = useInView({
-    triggerOnce: true, 
+    triggerOnce: false, 
     threshold: 0.5, 
   });
 

@@ -2,6 +2,7 @@ import { Menu, MessageCircleMoreIcon,ChevronUp} from 'lucide-react';
 import './App.css'
 import AboutUsSection from './Test';
 import { useInView } from 'react-intersection-observer';
+import { useState } from 'react';
 import Service from './Services';
 import About from './About';
 import Gallery from './Gallery';
@@ -11,6 +12,31 @@ export default function name() {
   const { ref: heroRef, inView: isHeroVisible } = useInView({
     threshold: 0.1, 
   });
+
+  const [formData,setFormData]=useState(
+          {
+            story:'',
+          }
+        );
+      
+        const handleChange = (event)=>{
+          setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+            
+          })
+        };
+      
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            console.log(formData);
+            try {
+              const mailtoLink = `mailto:relapsafe@gmail.com?subject=Story&body= ${formData.story}`;
+              window.location.href = mailtoLink;
+            } catch (error) {
+              alert("Unable to open mail client. Please try again later.");
+            }     
+        };
 
   // Smooth scroll function
   const smoothScroll = (e) => {
@@ -53,7 +79,19 @@ export default function name() {
     <Service/>
     <Gallery/>
     <About/>
-    <Contact/>
+    <section id='Story'>
+      <div className="container storyContainer">
+      <h2 style={{textAlign:"center"}}>Your Story</h2>
+      <p>We would love to hear your story. Understanding the reasons that led you to start using drugs helps us improve our platform and provide better support to help you and  others overcome addiction.</p>
+      <form onSubmit={handleSubmit} className="Story">
+            <div >
+                <textarea type="text" name="story" className="story" id="" placeholder='Please enter your story here.....' style={{outline:"none"}} value={formData.story} onChange={handleChange} required />
+            </div>
+            <button type="submit" className='storyButton'>Share Your Story</button>
+          </form>
+      </div>
+      </section>
+    <Contact/> 
     {!isHeroVisible && (
       <a href="#Hero" onClick={smoothScroll}>
         <div className="topBox">
