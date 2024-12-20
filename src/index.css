@@ -4,10 +4,15 @@
   font-weight: 370;
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body{
-    margin: 0;
-    padding: 0;
-    background-color: #ecfffb;
+  margin: 0;
+  padding: 0;
+  background-color: #ecfffb;
 }
   
 button{
@@ -22,6 +27,7 @@ button{
 }
 
 button:hover{
+  border-radius: 2em;
   background-color: transparent;
   color: #3d9970;
   transform: translateY(-3px);

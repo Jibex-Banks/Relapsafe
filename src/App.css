@@ -2,6 +2,7 @@
   background-color: #ecfffb;
   top: 0;
   width: 100dvw;
+  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,6 +12,7 @@
   position: fixed;
   align-items: center;
 }
+
 a{
   text-decoration: none;
   cursor: pointer;
@@ -30,6 +32,10 @@ a{
 .logo h1{
   margin: 0;
   padding: 0;
+}
+
+ul{
+  list-style: none;
 }
 
 .navitems{
@@ -60,7 +66,7 @@ a{
 }
 
 #Hero{
-  margin: 8em 0;
+  margin: 5em 0;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -243,11 +249,15 @@ a{
   background-color: #3d9970;
   border-radius: 16px 0 0 16px;
   color: white;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .container .contactInfo a{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .container .contactform{
@@ -302,9 +312,19 @@ a{
   text-align: center;
 }
 
-#sub{
-  accent-color: #3d9970;
-  cursor: pointer;
+.topBox{
+  display: flex;
+  align-items: center;
+  color: #ecfffb;
+  background-color: #3d9970;
+  opacity: 0.86;
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+  border-radius: 6px;
+  right: 10px;
+  position: fixed;
+  bottom: 35px;
 }
 
 footer{
@@ -317,6 +337,13 @@ footer{
   display: flex;
   justify-content: center;
 }
+
+/*.show{
+   width: 60vw;
+  background-color: aqua;
+  z-index: -100;
+  display: block;
+} */
 
 /* Media Queries */
 /* Small devices (phones, 320px and up) */
@@ -338,7 +365,6 @@ footer{
   .navitems {
     display: none;  
   }
-
   .menu{
     display: none;
   }
@@ -447,7 +473,7 @@ footer{
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 769px) {
-  .menubar{
+  #menubar{
     display: none;
   }
 
@@ -469,4 +495,40 @@ footer{
     width: 60%;
     padding: 40px;
   }
+}
+
+
+/* Services Section Transition Styles */
+.services-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.services-section.services-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.serviceContents {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: 300ms;
+}
+
+.serviceContents.services-content-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-item {
+  opacity: 0;
+  transform: translatey(100px);
+  transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+}
+
+.service-item.service-item-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
