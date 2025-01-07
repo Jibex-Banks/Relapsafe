@@ -1,4 +1,4 @@
-import { Menu, MessageCircleMoreIcon,ChevronUp} from 'lucide-react';
+import { Menu, MessageCircleMoreIcon,ChevronUp, Globe, Link, Instagram, Facebook} from 'lucide-react';
 import './App.css'
 import AboutUsSection from './Test';
 import { useInView } from 'react-intersection-observer';
@@ -26,6 +26,18 @@ export default function name() {
             
           })
         };
+
+        const handleSponsorButton = (event) =>{
+          event.preventDefault();
+          console.log("I am sending a sponsor enquiry message");
+          try {
+            const mailtoLink =`mailto:relapsafe@gmail.com?`;
+            window,location.href = mailtoLink;            
+            console.log("I am sending a sponsor enquiry message");
+          } catch (error) {
+            alert("Unable to open mail client. Please try again later.")
+          }
+        }
       
         const handleSubmit = (event) => {
             event.preventDefault();
@@ -37,6 +49,16 @@ export default function name() {
               alert("Unable to open mail client. Please try again later.");
             }     
         };
+
+        const linkk = "http://localhost:5174/";
+        const HandleLinkCopy =  function(e) {
+          console.log("Hi I am handling link copy!!!!");
+          navigator.clipboard.writeText(linkk).then(() => {
+            alert("Link copied to clipboard successfully!!!")
+          }).catch(() => {
+            alert("Failed to copy link")
+          })
+        }
 
   // Smooth scroll function
   const smoothScroll = (e) => {
@@ -56,7 +78,7 @@ export default function name() {
     <>
     <div className="">
     <div className="Navbar">
-    <a href="#Hero" onClick={smoothScroll}><div className="logo"><img src="src/images/RelapsafeLogo.png" alt="logo" className='logoimage'   /><h1>Relap<span style={{color:"#3d9970"}}>SAFE</span></h1></div></a>
+    <a href="#Hero" onClick={smoothScroll}><div className="logo"><img src="src/images/RelapsafeLogo.png" alt="logo" className='logoimage'  /><h1>Relap<span style={{color:"#3d9970"}}>SAFE</span></h1></div></a>
       <ul className="navitems">
         <a href="#Hero" onClick={smoothScroll}><li>Home</li></a>
         <a href="#Services" onClick={smoothScroll}><li>Services</li></a>
@@ -89,6 +111,18 @@ export default function name() {
             </div>
             <button type="submit" className='storyButton'>Share Your Story</button>
           </form>
+      </div>
+      </section>
+      <section id='Sponsor'>
+      <div className="container sponsorContainer">
+        <div className="sponsorContents">
+          <h1>Did You Know?</h1>
+          <p>40%  of high-risk drug users in Nigeria reported wanting drug treatment but being unable to access it due to barriers like cost, stigma, and lack of available services despite their willingness to recover.</p>
+
+          <h3>Join Us in Guiding Recovery and Fostering Renewal.
+          By sponsoring the treatment of someone in need, you can become a beacon of hope in their journey to recovery.</h3>
+          <button onClick={handleSponsorButton}><b>Email Us To Help</b></button>
+        </div>
       </div>
       </section>
     <Contact/> 

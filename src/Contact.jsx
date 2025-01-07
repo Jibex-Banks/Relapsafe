@@ -1,4 +1,4 @@
-import { PhoneCall,Mail, MapPinIcon} from 'lucide-react';
+import { PhoneCall,Mail, MapPinIcon, MessageCircleMoreIcon, Instagram, Linkedin, Twitter} from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 
@@ -63,7 +63,16 @@ export default function Contact() {
             <p><a href="mailto:relapsafe@gmail.com"><Mail style={{paddingRight:"10px"}}/> <span style={{textDecoration:"underline"}}>relapsafe@gmail.com</span></a></p>
 
             <p><MapPinIcon style={{paddingRight:"10px"}}/>Plot 681, Cadastral Zone C, OO, Research & Institution Area, Airport Road, Jabi, Abuja 900108, Federal Capital Territory</p>
+
+          <h3 style={{marginBottom:"30px",marginTop:"40px",fontWeight:"600"}}>Socials</h3>
+          <div className="socialAccounts">
+            <a href="https://x.com/relapsafe?s=11&t=NxBf7EtzSvnJMyBNkwVE5A" target='_blank'><Twitter style={{width:'30px',height:'30px'}}/></a>
+            <a href="https://www.instagram.com/relapsafe_support?igsh=MWYybnNqdXc4cHRmZw%3D%3D&utm_source=qr" target='_blank'><Instagram style={{width:'30px',height:'30px'}}/>
+            </a>
+            <a href="https://www.linkedin.com/company/relapsafe/" target='_blank'><Linkedin style={{width:'30px',height:'30px'}}/></a>
+          </div>
         </div>
+        
         <div className="contactform">
           <form onSubmit={handleSubmit}>
             <div className="name" >
