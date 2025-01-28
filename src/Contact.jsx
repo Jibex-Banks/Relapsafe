@@ -62,7 +62,7 @@ export default function Contact() {
 
             <p><a href="mailto:relapsafe@gmail.com"><Mail style={{paddingRight:"10px"}}/> <span style={{textDecoration:"underline"}}>relapsafe@gmail.com</span></a></p>
 
-            <p><MapPinIcon style={{paddingRight:"10px"}}/>Plot 681, Cadastral Zone C, OO, Research & Institution Area, Airport Road, Jabi, Abuja 900108, Federal Capital Territory</p>
+            <p style={{width:"80%",margin:"auto"}}><MapPinIcon style={{paddingRight:"10px"}}/>Plot 681, Cadastral Zone C, OO, Research & Institution Area, Airport Road, Jabi, Abuja 900108, Federal Capital Territory</p>
 
           <h3 style={{marginBottom:"30px",marginTop:"40px",fontWeight:"600"}}>Socials</h3>
           <div className="socialAccounts">

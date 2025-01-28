@@ -1,4 +1,4 @@
-import { Menu, MessageCircleMoreIcon,ChevronUp, Globe, Link, Instagram, Facebook} from 'lucide-react';
+import { Menu, MessageCircleMoreIcon,ChevronUp, Globe, Link, Instagram, Facebook, ShieldClose, SidebarClose, X} from 'lucide-react';
 import './App.css'
 import AboutUsSection from './Test';
 import { useInView } from 'react-intersection-observer';
@@ -74,20 +74,58 @@ export default function name() {
     }
   };
 
+  function navSelect(e) {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    const menus = document.querySelector(".sidebar");
+    menus.style.display = "none";
+
+  }
+
+  function OpenSide() {
+    const menus = document.querySelector(".sidebar");
+    menus.style.display = "flex"
+  }
+
+  function CloseSide() {
+    const menus = document.querySelector(".sidebar");
+    menus.style.display = "none"
+  }
+
   return(
     <>
     <div className="">
     <div className="Navbar">
     <a href="#Hero" onClick={smoothScroll}><div className="logo"><img src="src/images/RelapsafeLogo.png" alt="logo" className='logoimage'  /><h1>Relap<span style={{color:"#3d9970"}}>SAFE</span></h1></div></a>
       <ul className="navitems">
-        <a href="#Hero" onClick={smoothScroll}><li>Home</li></a>
+        <a href="#Hero" onClick={smoothScroll} ><li>Home</li></a>
         <a href="#Services" onClick={smoothScroll}><li>Services</li></a>
         <a href="#Gallery" onClick={smoothScroll}><li>Gallery</li></a>
         <a href="#About" onClick={smoothScroll}><li>About</li></a>
         <a href="#Contact" onClick={smoothScroll}><li>Contact</li></a>
       </ul>
-      <div id='menubar'><Menu className="menu" /></div>
+      <li className='menu'><Menu style={{height:"35px",width:"35px"}} onClick={OpenSide}/></li>
     </div>
+    <ul className="sidebar">
+        <li><X style={{height:"35px",width:"35px",paddingTop:"10px",paddingLeft:"10px"}} onClick={CloseSide}/></li>
+        <a href="#Hero" onClick={navSelect}><li>Home</li></a>
+        <a href="#Services" onClick={navSelect}><li>Services</li></a>
+        <a href="#Gallery" onClick={navSelect}><li>Gallery</li></a>
+        <a href="#About" onClick={navSelect}><li>About</li></a>
+        <a href="#Story" onClick={navSelect}><li>Story</li></a>
+        <a href="#Sponsor" onClick={navSelect}><li>Sponsor</li></a>
+        <a href="#Contact" onClick={navSelect}><li>Contact</li></a>
+
+      </ul>
     <section id="Hero" ref={heroRef}>
       <div className="texts">
     <h2>Guiding Recovery & Fostering Renewal</h2>
@@ -109,8 +147,10 @@ export default function name() {
             <div >
                 <textarea type="text" name="story" className="story" id="" placeholder='Please enter your story here.....' style={{outline:"none"}} value={formData.story} onChange={handleChange} required />
             </div>
-            <button type="submit" className='storyButton'>Share Your Story</button>
+            <button type="submit" className='storyButton' style={{marginBottom:"20px",marginTop:"20px"}}>Share Your Story</button>
           </form>
+          <p style={{ fontSize: "0.9rem", color: "gray", marginTop: "4em" }}>
+          <strong>Disclaimer:</strong> Your story is completely anonymous and confidential. It will not be shared publicly or linked back to you. We value your privacy and appreciate your honesty in helping us build a supportive platform.</p>
       </div>
       </section>
       <section id='Sponsor'>
