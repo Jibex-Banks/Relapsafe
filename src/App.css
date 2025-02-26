@@ -350,6 +350,15 @@ ul{
   margin-bottom: 4em;
 }
 
+.contentStatus{
+  margin: 0;
+  padding: 0;
+  padding-top: 6px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
 .container button{
   margin-bottom: 40px;
   text-align: center;
@@ -403,7 +412,6 @@ footer{
   font-weight: 300;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 20px;
 }
 
 .Story{
@@ -419,6 +427,14 @@ footer{
   overflow-y: auto;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.2em;
+}
+
+.storyStatus{
+  margin: 0;
+  padding: 0;
+  padding-top: 6px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .storyButton{

@@ -2,29 +2,46 @@ import { Menu, MessageCircleMoreIcon,ChevronUp, Globe, Link, Instagram, Facebook
 import './App.css'
 import AboutUsSection from './Test';
 import { useInView } from 'react-intersection-observer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Service from './Services';
 import About from './About';
 import Gallery from './Gallery';
 import Contact from './Contact';
-export default function name() {
+import axios from 'axios';
+
+
+
+export default function App() {
 
   const { ref: heroRef, inView: isHeroVisible } = useInView({
     threshold: 0.1, 
   });
 
-  const [formData,setFormData]=useState(
-          {
-            story:'',
+          const [content, setContent]=useState("");
+
+          const handleStoryChange = (e)=>{
+            setContent(e.target.value);
+            console.log(content);
           }
-        );
-      
-        const handleChange = (event)=>{
-          setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-            
-          })
+
+          const handleStorySubmit = (event) => {
+            var cont = document.querySelector(".storyStatus");
+            try{
+            event.preventDefault();
+            axios.post("http://localhost:3000/story",{content});
+            setContent("");
+            cont.textContent = "Successful!"
+            cont.style.color = "rgba(4, 225, 4, 0.527)"
+            setTimeout(() => {
+              cont.textContent = "";
+              }, 3000);
+          } catch(error) {
+            cont.textContent ="Error adding story";
+            cont.style.color = "red";
+            setTimeout(() => {
+              cont.textContent = "";
+              }, 3000);
+          }
         };
 
         const handleSponsorButton = (event) =>{
@@ -39,26 +56,9 @@ export default function name() {
           }
         }
       
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            console.log(formData);
-            try {
-              const mailtoLink = `mailto:relapsafe@gmail.com?subject=Story&body= ${formData.story}`;
-              window.location.href = mailtoLink;
-            } catch (error) {
-              alert("Unable to open mail client. Please try again later.");
-            }     
-        };
+       
 
-        const linkk = "http://localhost:5174/";
-        const HandleLinkCopy =  function(e) {
-          console.log("Hi I am handling link copy!!!!");
-          navigator.clipboard.writeText(linkk).then(() => {
-            alert("Link copied to clipboard successfully!!!")
-          }).catch(() => {
-            alert("Failed to copy link")
-          })
-        }
+    
 
   // Smooth scroll function
   const smoothScroll = (e) => {
@@ -143,11 +143,12 @@ export default function name() {
       <div className="container storyContainer">
       <h2 style={{textAlign:"center"}}>Your Story</h2>
       <p>We would love to hear your story. Understanding the reasons that led you to start using drugs helps us improve our platform and provide better support to help you and  others overcome addiction.</p>
-      <form onSubmit={handleSubmit} className="Story">
+      <form onSubmit={handleStorySubmit} className="Story">
             <div >
-                <textarea type="text" name="story" className="story" id="" placeholder='Please enter your story here.....' style={{outline:"none"}} value={formData.story} onChange={handleChange} required />
+                <textarea type="text" name="story" className="story" id="" placeholder='Please enter your story here.....' style={{outline:"none"}} value={content} onChange={handleStoryChange} required />
+              <p className='storyStatus' style={{fontWeight: 550}}></p>
             </div>
-            <button type="submit" className='storyButton' style={{marginBottom:"20px",marginTop:"20px"}}>Share Your Story</button>
+            <button type="submit" className='storyButton' style={{marginBottom:"20px",marginTop:"20px"}}>Share Your Story</button> 
           </form>
           <p style={{ fontSize: "0.9rem", color: "gray", marginTop: "4em" }}>
           <strong>Disclaimer:</strong> Your story is completely anonymous and confidential. It will not be shared publicly or linked back to you. We value your privacy and appreciate your honesty in helping us build a supportive platform.</p>

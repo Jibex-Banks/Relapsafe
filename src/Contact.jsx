@@ -1,6 +1,7 @@
 import { PhoneCall,Mail, MapPinIcon, MessageCircleMoreIcon, Instagram, Linkedin, Twitter} from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
+import axios from 'axios';
 
 
 export default function Contact() {
@@ -21,34 +22,38 @@ export default function Contact() {
         }
       };
 
-      const [formData,setFormData]=useState(
-        {
-          firstname: '',
-          lastname: '',
-          email: '',
-          phoneNumber:'',
-          subject:'',
-          message:'',
-        }
-      );
-    
-      const handleChange = (event)=>{
-        setFormData({
-          ...formData,
-          [event.target.name]: event.target.value,
-          
-        })
-      };
+      const [firstname, setFirstname] = useState("");
+      const [lastname, setLastname] = useState("");
+      const [email, setEmail] = useState("");
+      const [phoneNumber, setPhoneNumber] = useState("");
+      const [subject, setSubject] = useState("");
+      const [message, setMessage] = useState("");
+
     
       const handleSubmit = (event) => {
           event.preventDefault();
-          console.log(formData);
           try {
-            const mailtoLink = `mailto:relapsafe@gmail.com?subject=${formData.subject}&body=Name: ${formData.firstname+formData.lastname} \nEmail: ${formData.email} \nPhoneNumber: ${formData.phoneNumber} \nMessage: ${formData.message}`;
-            window.location.href = mailtoLink;
-          } catch (error) {
-            alert("Unable to open mail client. Please try again later.");
-          }     
+            var cont = document.querySelector(".contactStatus");
+            const result = axios.post("http://localhost:3000/contact",{firstname, lastname,email,phoneNumber,subject,message});
+            cont.textContent = "Successfully Saved!"
+            cont.style.color = "rgba(4, 225, 4, 0.527)"
+            setTimeout(() => {
+              cont.textContent = "";
+              }, 3000);
+          } catch(error) {
+            cont.textContent ="Please Try Again";
+            cont.style.color = "red";
+            setTimeout(() => {
+              cont.textContent = "";
+              }, 3000);
+          }
+          // console.log(formData);
+          // try {
+          //   const mailtoLink = `mailto:relapsafe@gmail.com?subject=${formData.subject}&body=Name: ${formData.firstname+formData.lastname} \nEmail: ${formData.email} \nPhoneNumber: ${formData.phoneNumber} \nMessage: ${formData.message}`;
+          //   window.location.href = mailtoLink;
+          // } catch (error) {
+          //   alert("Unable to open mail client. Please try again later.");
+          // }     
       };
       
     return(
@@ -78,21 +83,21 @@ export default function Contact() {
             <div className="name" >
               <div className="first">
               <label htmlFor="firstName">FirstName</label>
-              <input type="text" name="firstname" id="firstName" style={{outline:"none"}}  value={formData.firstname} onChange={handleChange} required />
+              <input type="text" name="firstname" id="firstName" style={{outline:"none"}}  value={firstname} onChange={(e)=> setFirstname(e.target.value)} required autoComplete='on'/>
               </div>
               <div className="second">
-              <label htmlFor="lastName">LastName</label>
-              <input type="text" name="lastname" id="lastname" style={{outline:"none"}} value={formData.lastname} onChange={handleChange} required />
+              <label htmlFor="lastname">LastName</label>
+              <input type="text" name="lastname" id="lastname" style={{outline:"none"}} value={lastname} onChange={(e)=> setLastname(e.target.value)} required autoComplete='on'/>
               </div>
             </div>
             <div className="usercontact">
               <div className="first">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" style={{outline:"none"}} value={formData.email} onChange={handleChange} required />
+              <input type="email" name="email" id="email" style={{outline:"none"}} value={email} onChange={(e)=> setEmail(e.target.value)} required  autoComplete='on'/>
               </div>
               <div className="second">
               <label htmlFor="phoneNumber">Phone Number</label>
-              <input type="tel" name="phoneNumber" id="phoneNumber" style={{outline:"none"}} value={formData.phoneNumber} onChange={handleChange} required />
+              <input type="tel" name="phoneNumber" id="phoneNumber" style={{outline:"none"}} value={phoneNumber} onChange={(e)=> setPhoneNumber(e.target.value)} required  autoComplete='on'/>
               </div>
             </div>
             <div className="enq">
@@ -100,30 +105,31 @@ export default function Contact() {
                 <div className="options">
                 <div className="rad">
   
-                <input type="radio" name="subject" id="general" style={{accentColor:"#3d9970", cursor:"pointer"}} value="GENERAL INQUIRY" onChange={handleChange}  required />
-                <label htmlFor="">General Inquiry</label>
+                <input type="radio" name="subject" id="general" style={{accentColor:"#3d9970", cursor:"pointer"}} value="GENERAL INQUIRY" onChange={(e)=> setSubject(e.target.value)}  required />
+                <label htmlFor="general">General Inquiry</label>
+                </div>
+                <div className="rad">
+
+                <input type="radio" name="subject" id="booking" style={{accentColor:"#3d9970", cursor:"pointer"}} value="BOOKING OUTREACH" onChange={(e)=> setSubject(e.target.value)}  required />
+                <label htmlFor="booking">Booking Outreach</label>
                 </div>
                 <div className="rad">
   
-                <input type="radio" name="subject" id="booking" style={{accentColor:"#3d9970", cursor:"pointer"}} value="BOOKING OUTREACH" onChange={handleChange}  required />
-                <label htmlFor="">Booking Outreach</label>
+                <input type="radio" name="subject" id="therapy" style={{accentColor:"#3d9970", cursor:"pointer"}} value="REQUESTING THERAPY" onChange={(e)=> setSubject(e.target.value)}  required />
+                <label htmlFor="therapy">Requesting Therapy</label>
                 </div>
                 <div className="rad">
   
-                <input type="radio" name="subject" id="therapy" style={{accentColor:"#3d9970", cursor:"pointer"}} value="REQUESTING THERAPY" onChange={handleChange}  required />
-                <label htmlFor="">Requesting Therapy</label>
-                </div>
-                <div className="rad">
-  
-                <input type="radio" name="subject" id="others"  style={{accentColor:"#3d9970", cursor:"pointer"}}value="OTHERS" onChange={handleChange}  required />
-                <label htmlFor="">Others</label>
+                <input type="radio" name="subject" id="others"  style={{accentColor:"#3d9970", cursor:"pointer"}}value="OTHERS" onChange={(e)=> setSubject(e.target.value)}  required />
+                <label htmlFor="others">Others</label>
                 </div>
                 </div>
             </div>
             <div className="message">
                 <label htmlFor="message">Message</label>
-                <input type="text" name="message" id="" placeholder='Enter Message.' style={{outline:"none"}} value={formData.message} onChange={handleChange} required />
+                <input type="text" name="message" id="message" placeholder='Enter Message.' style={{outline:"none"}} value={message} onChange={(e)=> setMessage(e.target.value)} required />
             </div>
+            <p className='contactStatus'></p>
             <button type="submit">Submit</button>
           </form>
         </div>
