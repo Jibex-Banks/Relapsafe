@@ -34,7 +34,7 @@ export default function Contact() {
           event.preventDefault();
           try {
             var cont = document.querySelector(".contactStatus");
-            const result = axios.post('http://localhost:3000/contact',{firstname, lastname,email,phoneNumber,subject,message});
+            const result = axios.post('https://relapsafe-api.vercel.app/contact',{firstname, lastname,email,phoneNumber,subject,message});
             cont.textContent = "Sent Successfully!"
             cont.style.color = "rgba(4, 225, 4, 0.527)"
             setTimeout(() => {

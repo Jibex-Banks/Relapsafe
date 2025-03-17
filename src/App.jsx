@@ -28,7 +28,7 @@ export default function App() {
             var cont = document.querySelector(".storyStatus");
             try{
             event.preventDefault();
-            axios.post('http://localhost:3000/story',{content});
+            axios.post('https://relapsafe-api.vercel.app/story',{content});
             setContent("");
             cont.textContent = "Successful!"
             cont.style.color = "rgba(4, 225, 4, 0.527)"
