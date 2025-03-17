@@ -34,26 +34,25 @@ export default function Contact() {
           event.preventDefault();
           try {
             var cont = document.querySelector(".contactStatus");
-            const result = axios.post("http://localhost:3000/contact",{firstname, lastname,email,phoneNumber,subject,message});
-            cont.textContent = "Successfully Saved!"
+            const result = axios.post('http://localhost:3000/contact',{firstname, lastname,email,phoneNumber,subject,message});
+            cont.textContent = "Sent Successfully!"
             cont.style.color = "rgba(4, 225, 4, 0.527)"
             setTimeout(() => {
               cont.textContent = "";
-              }, 3000);
+            }, 3000);
+            setFirstname("");
+            setLastname("");
+            setEmail("");
+            setPhoneNumber("");
+            setSubject("");
+            setMessage("");
           } catch(error) {
             cont.textContent ="Please Try Again";
             cont.style.color = "red";
             setTimeout(() => {
               cont.textContent = "";
               }, 3000);
-          }
-          // console.log(formData);
-          // try {
-          //   const mailtoLink = `mailto:relapsafe@gmail.com?subject=${formData.subject}&body=Name: ${formData.firstname+formData.lastname} \nEmail: ${formData.email} \nPhoneNumber: ${formData.phoneNumber} \nMessage: ${formData.message}`;
-          //   window.location.href = mailtoLink;
-          // } catch (error) {
-          //   alert("Unable to open mail client. Please try again later.");
-          // }     
+          }   
       };
       
     return(
