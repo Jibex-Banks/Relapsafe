@@ -105,7 +105,7 @@ export default function App() {
     <>
     <div className="">
     <div className="Navbar">
-    <a href="#Hero" onClick={smoothScroll}><div className="logo"><img src="src/images/RelapsafeLogo.png" alt="logo" className='logoimage'  /><h1>Relap<span style={{color:"#3d9970"}}>SAFE</span></h1></div></a>
+    <a href="#Hero" onClick={smoothScroll}><div className="logo"><img src="/RelapsafeLogo.png" alt="logo" className='logoimage'  /><h1>Relap<span style={{color:"#3d9970"}}>SAFE</span></h1></div></a>
       <ul className="navitems">
         <a href="#Hero" onClick={smoothScroll} ><li>Home</li></a>
         <a href="#Services" onClick={smoothScroll}><li>Services</li></a>
@@ -133,7 +133,7 @@ export default function App() {
     <a href='#About' onClick={smoothScroll}><button >Join us today<MessageCircleMoreIcon style={{paddingLeft:"5px"}}/></button></a>
     </div>
     <div className="heroImage">
-      <img src="https://github.com/Jibex-Banks/Relapsafe/blob/921b984b56fcab399f179969706bc5a8b95cc4e5/src/images/backgroundImage.png" alt="heroImage" className='heroImg'/>
+      <img src='/backgroundImage.png' alt="heroImage" className='heroImg'/>
     </div>
     </section>
     <Service/>

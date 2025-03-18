@@ -16,10 +16,10 @@ export default function Gallery() {
       };
 
       const images = [
-        {id:1, img:"src/images/outreachimg1.jpeg"},
-        {id:2, img:"src/images/outreachimg2.jpeg"},
-        {id:3, img:"src/images/outreachimg3.png"},
-        {id:4, img:"src/images/outreachimg6.jpeg"}
+        {id:1, img:"/outreachimg1.jpeg"},
+        {id:2, img:"/outreachimg2.jpeg"},
+        {id:3, img:"/outreachimg3.png"},
+        {id:4, img:"/outreachimg6.jpeg"}
       ]
     return(
         <section id='Gallery'>
