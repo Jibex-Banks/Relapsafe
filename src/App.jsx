@@ -133,7 +133,11 @@ export default function App() {
     <a href='#About' onClick={smoothScroll}><button >Join us today<MessageCircleMoreIcon style={{paddingLeft:"5px"}}/></button></a>
     </div>
     <div className="heroImage">
+<<<<<<< HEAD
       <img src='/backgroundImage.png' alt="heroImage" className='heroImg'/>
+=======
+      <img src="src/images/backgroundImage.png" alt="heroImage" className='heroImg'/>
+>>>>>>> 8a57b1f381dfd09e8f528ef71d1c0ca4a140ef99
     </div>
     </section>
     <Service/>
