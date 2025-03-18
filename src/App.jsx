@@ -133,7 +133,7 @@ export default function App() {
     <a href='#About' onClick={smoothScroll}><button >Join us today<MessageCircleMoreIcon style={{paddingLeft:"5px"}}/></button></a>
     </div>
     <div className="heroImage">
-      <img src="src/images/backgroundImage.png" alt="heroImage" className='heroImg'/>
+      <img src="https://github.com/Jibex-Banks/Relapsafe/blob/921b984b56fcab399f179969706bc5a8b95cc4e5/src/images/backgroundImage.png" alt="heroImage" className='heroImg'/>
     </div>
     </section>
     <Service/>
