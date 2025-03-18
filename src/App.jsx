@@ -175,7 +175,7 @@ export default function App() {
       </a>
     )}
     <footer>
-          &copy; {new Date().getFullYear()} RelapSAFE. All rights reserved.
+          &copy; {new Date().getFullYear()} RelapSAFE & MAM Technologies. All rights reserved.
       </footer>
     </div>
     </>
